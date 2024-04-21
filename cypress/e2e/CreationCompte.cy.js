@@ -6,9 +6,9 @@ describe('Création de compte', () => {
 
     // Initialiser ces variables avec vos valeurs spécifique
     before(() => {
-      firstname = 'med';
-      lastname = 'amairi';
-      email = 'med@test.com';
+      firstname = 'Atef';
+      lastname = 'MOKHTARI';
+      email = 'atef@test.com';
       tel = '1234567890';
       password = 'abcd123';
     });
@@ -23,6 +23,7 @@ describe('Création de compte', () => {
     })
 
     // les cas des tests 
+    
     it('Creation de nouveau compte avec succée', () => {
       cy.get('input[name="firstname"]').type(firstname)
       cy.get('input[name="lastname"]').type(lastname)
@@ -37,13 +38,18 @@ describe('Création de compte', () => {
     });
 
     //Ajoutez autres test cases pour la partie creation du compte
-    /*
-    it('a create account test case', () => {
-      .
-      .
-      .
-      .
+    
+  
+    it('test Creation de nouveau compte sans cocher le checkbox de "I have read and agree to the Privacy Policy" ', () => {
+      cy.get('input[name="firstname"]').type(firstname)
+      cy.get('input[name="lastname"]').type(lastname)
+      cy.get('input[name="email"]').type(email)
+      cy.get('input[name="telephone"]').type(tel)
+      cy.get('input[name="password"]').type(password)
+      cy.get('input[name="confirm"]').type(password)
+      cy.get('input[id="input-newsletter-yes"]').click({force:true})
+      cy.get('input[value="Continue"]').click({force:true})
+      cy.contains("You must agree to the Privacy Policy!")
     });
-    */
-
-  });
+    
+  })
